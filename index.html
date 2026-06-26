@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamarala's Royal Wedding Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Updock&family=Sofia+Sans:wght@400;600&display=swap');
+
+        /* రాయల్ వెల్‌కమ్ స్క్రీన్ */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle, #4a0010 0%, #1a0005 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            border: 10px solid #b8860b;
+            box-sizing: border-box;
+        }
+
+        .welcome-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 70px;
+            color: #b8860b;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.6; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1.05); }
+        }
+
+        .enter-btn {
+            background: linear-gradient(135deg, #b8860b 0%, #e6ca65 100%);
+            color: #1a0005;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 900;
+            padding: 14px 36px;
+            border: 2px solid #fffcf2;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            letter-spacing: 2px;
+        }
+
+        .enter-btn:hover {
+            background: #fffcf2;
+            color: #800020;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(184, 134, 11, 0.5);
+        }
+
+        /* ప్రధాన బాడీ స్టైలింగ్ */
+        body {
+            background: radial-gradient(circle, #3d000d 0%, #1a0005 100%); 
+            font-family: 'Sofia Sans', sans-serif;
+            margin: 0;
+            padding: 25px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .invitation-card {
+            background: #fffcf2; 
+            border: 6px double #b8860b; 
+            outline: 16px solid #290008;
+            max-width: 550px;
+            width: 100%;
+            padding: 45px 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            text-align: center;
+            border-radius: 4px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* రాయల్ కార్నర్ డిజైన్స్ */
+        .invitation-card::before, .invitation-card::after {
+            content: "⚜";
+            position: absolute;
+            color: #b8860b;
+            font-size: 26px;
+        }
+        .invitation-card::before { top: 12px; left: 18px; }
+        .invitation-card::after { top: 12px; right: 18px; }
+
+        .blessings {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 900;
+            color: #800020;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .shloka {
+            font-style: italic;
+            color: #444;
+            font-size: 15px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #800020;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .divine-blessings {
+            font-size: 14px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .hosts {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #b8860b;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .invitation-text {
+            font-style: italic;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 25px 0;
+        }
+
+        /* ఫొటో ఫ్రేమ్ స్టైలింగ్ (కొత్త నిలువు ఫోటో కోసం ప్రత్యేకంగా డిజైన్ చేయబడింది) */
+        .couple-image-container {
+            margin: 30px auto;
+            max-width: 300px;
+            border: 3px solid #b8860b;
+            padding: 8px;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border-radius: 4px; 
+        }
+
+        .couple-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .couple-names {
+            margin: 30px 0;
+        }
+
+        .groom, .bride {
+            font-family: 'Great Vibes', cursive;
+            font-size: 55px;
+            color: #800020;
+            margin: 5px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .prefix {
+            font-size: 18px; 
+            font-family: 'Cinzel', serif; 
+            color: #b8860b;
+            display: block;
+            margin-bottom: -8px;
+            font-weight: 700;
+        }
+
+        .with {
+            font-family: 'Updock', cursive;
+            font-size: 36px;
+            color: #b8860b;
+            margin: 10px 0;
+        }
+
+        .bride-details {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 12px;
+            padding: 0 15px;
+        }
+
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 35px 0;
+        }
+        
+        .section-divider::before, .section-divider::after {
+            content: "";
+            height: 1px;
+            width: 35%;
+            background: linear-gradient(to right, transparent, #b8860b, transparent);
+        }
+        .section-divider span {
+            color: #b8860b;
+            margin: 0 12px;
+            font-size: 20px;
+        }
+
+        /* ఈవెంట్ వివరాల బాక్సులు */
+        .event-info {
+            margin: 20px 0;
+            background: linear-gradient(to right, rgba(184, 134, 11, 0.02), rgba(184, 134, 11, 0.08), rgba(184, 134, 11, 0.02));
+            padding: 18px;
+            border-radius: 4px;
+            border-left: 4px solid #b8860b;
+            border-right: 4px solid #b8860b;
+            box-shadow: inset 0 0 10px rgba(184, 134, 11, 0.05);
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #800020;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+        }
+
+        .event-details {
+            font-size: 15px;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #800020;
+        }
+
+        .footer-section {
+            margin-top: 45px;
+            font-size: 14px;
+        }
+
+        .yours {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            color: #b8860b;
+            letter-spacing: 2px;
+        }
+
+        .footer-hosts {
+            font-weight: 600; 
+            margin-top: 8px; 
+            color: #222; 
+            font-size: 17px;
+            letter-spacing: 0.5px;
+        }
+
+        .compliments {
+            margin-top: 25px;
+            font-style: italic;
+            color: #555;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- రాయల్ వెల్‌కమ్ ఎంట్రీ స్క్రీన్ -->
+    <div id="welcome-screen">
+        <div class="welcome-text">Welcome</div>
+        <button class="enter-btn" onclick="openInvitation()">Open Invitation</button>
+    </div>
+
+    <!-- ప్రధాన పెళ్లి పత్రిక కార్డ్ -->
+    <div class="invitation-card">
+        <div class="blessings">Srirastu &nbsp;▪&nbsp; Shubhamastu &nbsp;▪&nbsp; Avignamastu</div>
+        <div class="shloka">"వక్రతుండ మహాకాయ సూర్యకోటి సమప్రభ..."</div>
+        
+        <h1 class="title">Wedding Invitation</h1>
+        
+        <div class="divine-blessings">With Divine Blessings of Sri Tamarala Tatabbai - Smt. Devudamma's Elder Son</div>
+        <div class="hosts">Sri Tamarala Appalanaidu - Smt. Devudamma</div>
+
+        <p class="invitation-text">
+            We solicit your gracious presence with family and friends <br>
+            on the auspicious occasion of the wedding of our only son
+        </p>
+
+        <!-- కొత్త ఫొటో ఫ్రేమ్ -->
+        <div class="couple-image-container">
+            <img src="IMG-20260626-WA0032.jpg" alt="Bride and Groom" class="couple-image">
+        </div>
+
+        <div class="couple-names">
+            <div class="groom"><span class="prefix">Chi.</span>Krishnayya</div>
+            <div class="with">with</div>
+            <div class="bride"><span class="prefix">Chi. La. Sow.</span>Gayathri</div>
+            <div class="bride-details">
+                (Only Daughter of <strong>Sri Jagarapu Chinababu (Late) - Smt. Devudamma</strong> <br>
+                of Jagarapupalem Village, Atchutapuram Mdl, Anakapalli Dt.)
+            </div>
+        </div>
+
+        <div class="section-divider"><span>⚜</span></div>
+
+        <div class="event-info">
+            <div class="event-title">✨ SUMHURTHAM ✨</div>
+            <div class="event-details">
+                On <span class="highlight">Thursday 2<sup>nd</sup> July 2026</span> at <span class="highlight">Night 01.51 hrs.</span><br>
+                (early hrs. of Friday) Sravana Nakstrayukta, Mesha Lagnam
+            </div>
+        </div>
+
+        <div class="event-info">
+            <div class="event-title">📍 VENUE 📍</div>
+            <div class="event-details">
+                Anakapalli Dist., Atchutapuram Mandal,<br>
+                <span class="highlight">Dosuru Sivaru, Nettivanipalem Village</span>,<br>
+                at Our Residence
+            </div>
+        </div>
+
+        <div class="event-info">
+            <div class="event-title">🍽️ DINNER FOLLOWS 🍽️</div>
+            <div class="event-details">
+                On <span class="highlight">Thursday 2<sup>nd</sup> July 2026</span> from <span class="highlight">7.00 pm onwards</span><br>
+                at marriage venue
+            </div>
+        </div>
+
+        <div class="section-divider"><span>⚜</span></div>
+
+        <div class="footer-section">
+            <div class="yours">YOUR'S</div>
+            <div class="footer-hosts">Smt. & Sri Tamarala Appalanaidu - Devudamma</div>
+            <div class="compliments">With Best Compliments from : Near and Dear</div>
+        </div>
+    </div>
+
+    <script>
+        function openInvitation() {
+            const screen = document.getElementById('welcome-screen');
+            screen.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                screen.style.display = 'none';
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
+
